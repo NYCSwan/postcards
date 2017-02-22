@@ -1,3 +1,6 @@
 <h2>Your basket</h2>
 
 <%= render 'items', :order => current_order %>
+
+<p><%= link_to 'Update Basket', basket_path, :method => :update %></p>
+<p><%= link_to 'Empty Basket', basket_path, :method => :delete %></p>
