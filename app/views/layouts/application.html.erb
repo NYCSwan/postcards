@@ -14,6 +14,8 @@
   <%= number_to_currency current_order.total_before_tax %>.
 </p>
 <% end %>
+<%= link_to "View basket", basket_path %>
+<%= flash[:notice] %>
 
 <%= yield %>
 
