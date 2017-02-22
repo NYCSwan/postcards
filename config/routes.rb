@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Shoppe::Engine => "/shoppe"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -31,7 +32,10 @@ Rails.application.routes.draw do
   #     resources :comments, :sales
   #     resource :seller
   #   end
-
+  get "postcard/:permalink" => "postcards#show", as: "postcard"
+  post "postcard/:permalink" => "postcards#buy"
+  root :to => "postcards#index"
+  
   # Example resource route with more complex sub-resources:
   #   resources :products do
   #     resources :comments
