@@ -32,10 +32,19 @@ Rails.application.routes.draw do
   #     resources :comments, :sales
   #     resource :seller
   #   end
+  root :to => "postcards#index"
+
   get "postcard/:permalink" => "postcards#show", as: "postcard"
   post "postcard/:permalink" => "postcards#buy"
-  root :to => "postcards#index"
   
+
+  get "basket" => "orders#show"
+  delete "basket" => "orders#destroy"
+
+  match "checkout", to: "orders#checkout", as: "checkout", via: [:get, :patch]
+  match "checkout/pay", to: "orders#payment", as: "checkout_payment", via: [:get, :post]
+  match "checkout/confirm", to: "orders#confirmation", as: "checkout_confirmation", via: [:get, :post]
+
   # Example resource route with more complex sub-resources:
   #   resources :products do
   #     resources :comments

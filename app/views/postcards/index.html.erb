@@ -1,1 +1,12 @@
 <h2>Index page</h2>
+
+<% @postcards.each do |category, postcards| %>
+  <h3><%= category.name %></h3>
+  <ul>
+    <% postcards.each do |postcard| %>
+    <li>
+      <h4><%= link_to postcard.name, postcard_path(postcard.permalink) %></h4>
+    </li>
+    <% end %>
+  </ul>
+<% end %>
