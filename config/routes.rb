@@ -32,7 +32,10 @@ Rails.application.routes.draw do
   #     resources :comments, :sales
   #     resource :seller
   #   end
-
+  get "postcard/:permalink" => "postcards#show", as: "postcard"
+  post "postcard/:permalink" => "postcards#buy"
+  root :to => "postcards#index"
+  
   # Example resource route with more complex sub-resources:
   #   resources :products do
   #     resources :comments
