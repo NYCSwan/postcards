@@ -16,7 +16,6 @@
 /log/*
 !/log/.keep
 /tmp
-=======
 *.gem
 *.rbc
 /.config
@@ -28,6 +27,7 @@
 /test/tmp/
 /test/version_tmp/
 /tmp/
+/.byebug_history
 
 # Used by dotenv library to load environment variables.
 # .env
