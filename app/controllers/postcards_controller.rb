@@ -7,6 +7,8 @@ class PostcardsController < ApplicationController
 
 	def show
 		@postcard = Shoppe::Product.root.find_by_permalink(params[:permalink])
+		byebug;
+		congresspeople = @postcard.find_congress_people
 	end
 
 	def buy

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222162530) do
+ActiveRecord::Schema.define(version: 20170223201646) do
 
   create_table "nifty_key_value_store", force: :cascade do |t|
     t.integer "parent_id"
@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(version: 20170222162530) do
     t.string  "name"
     t.string  "value"
   end
+
+  create_table "postcards", force: :cascade do |t|
+    t.string   "title"
+    t.string   "body",              null: false
+    t.string   "description",       null: false
+    t.string   "short_description", null: false
+    t.integer  "category_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "postcards", ["category_id"], name: "index_postcards_on_category_id"
 
   create_table "shoppe_addresses", force: :cascade do |t|
     t.integer  "customer_id"
