@@ -36,6 +36,8 @@ Rails.application.routes.draw do
 
   get "postcard/:permalink" => "postcards#show", as: "postcard"
   post "postcard/:permalink" => "postcards#buy"
+  get "postcard/:permalink" => "postcards#new"
+  post "postcard/:permalink" => "postcards#create"
   
 
   get "basket" => "orders#show"

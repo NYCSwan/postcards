@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170223201646) do
+ActiveRecord::Schema.define(version: 20170226204022) do
 
   create_table "nifty_key_value_store", force: :cascade do |t|
     t.integer "parent_id"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 20170223201646) do
     t.string  "group"
     t.string  "name"
     t.string  "value"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string   "ordered_item_type"
+    t.integer  "ordered_item_id"
+    t.integer  "quantity",                                  default: 1
+    t.decimal  "unit_price",        precision: 8, scale: 2
+    t.decimal  "tax_rate",          precision: 8, scale: 2
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
   end
 
   create_table "postcards", force: :cascade do |t|

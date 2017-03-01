@@ -7,8 +7,27 @@ class PostcardsController < ApplicationController
 
 	def show
 		@postcard = Shoppe::Product.root.find_by_permalink(params[:permalink])
+
+		congress_people = "https://openstates.org/api/v1/legistators/geo/?lat=35.79&long=-78.78"
+		uri = URI.parse(congress_people)
 		byebug;
-		congresspeople = @postcard.find_congress_people
+	end
+
+	def new
+	   @postcard = Postcard.new
+	   if request.xhr?
+	     render partial: 'postcards/new', locals: {postcard: @postcard}
+	   end
+  	end
+
+	def create
+		@postcard = Postcard.new(postcard_params)
+		if @postcard.save
+		  render 'basket'
+		  # redirect_to "/films/#{@postcard.review.film.id}"
+		else
+		  render 'new'
+		end
 	end
 
 	def buy
